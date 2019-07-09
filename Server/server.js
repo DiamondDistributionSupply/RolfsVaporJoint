@@ -3,6 +3,9 @@ const express = require("express")
 const session = require("express-session")
 const massive = require("massive")
 
+// Requiring Controllers
+let admin = require("./Controllers/AdminController")
+
 const app = express ()
 
 const {
@@ -20,6 +23,9 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
+
+// Admin endpoints
+app.get("/auth/admin/callback", admin.login)
 
 massive(CONNECTION_STRING).then(db => {
     app.set("db", db)
