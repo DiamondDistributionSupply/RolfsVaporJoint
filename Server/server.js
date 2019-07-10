@@ -24,8 +24,24 @@ app.use(session({
     saveUninitialized: true
 }))
 
+// Custome middleware
+app.use((req, res, next) => {
+    if (ENVIRONMENT === "DEV") {
+        let devAdmin = {
+            type: "developer",
+            auth: true
+        }
+        req.session.admin = devAdmin
+        next()
+    }
+    else {
+        next ()
+    }
+})
+
 // Admin endpoints
 app.get("/auth/admin/callback", admin.login)
+app.get("/api/admin/admin-data", admin.checkAdminCred)
 
 massive(CONNECTION_STRING).then(db => {
     app.set("db", db)

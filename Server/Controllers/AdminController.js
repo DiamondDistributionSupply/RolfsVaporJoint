@@ -31,12 +31,27 @@ module.exports = {
             // Check to see if admin credentials are correct
             const { sub } = resWithUserData.data
             let admin = await db.admin_login([sub])
-            if(sub === `${AA}`) {
+            if (sub === `${AA}`) {
                 req.session.admin = admin
                 res.redirect("/#/admin/home")
             }
             else {
                 res.status(403).redirect("/#/admin/login")
+            }
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
+    
+    checkAdminCred: (req, res) => {
+        try {
+            if (req.session.admin) {
+                res.status(200).send(req.session.admin)
+            }
+            else {
+                res.status(403).send("unauthorized")
             }
         }
         catch(err) {

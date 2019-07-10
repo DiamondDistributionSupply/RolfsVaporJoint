@@ -5,6 +5,15 @@ import { connect } from "react-redux"
 import { getAdminData } from "../../Ducks/reducer"
 
 class AdminHome extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            images: [],
+            description: ""
+        }
+    }
+
     async componentDidMount() {
         // Make sure authorized admin is logged in
         try {
@@ -12,7 +21,7 @@ class AdminHome extends Component {
             this.props.getAdminData(adminRes.data)
         }
         catch(err) {
-            if(err.response.status === 403) {
+            if (err.response.status === 403) {
                 alert("unauthorized")
                 this.props.history.push("/admin/login")
             }
@@ -21,8 +30,10 @@ class AdminHome extends Component {
 
     render() {
         return (
-            <div>
-                <p>AdminHome</p>
+            <div className="admin_home">
+                <div className="edit_images_container">
+                    
+                </div>
             </div>
         )
     }
