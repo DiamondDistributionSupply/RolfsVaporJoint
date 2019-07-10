@@ -5,6 +5,7 @@ const massive = require("massive")
 
 // Requiring Controllers
 let admin = require("./Controllers/AdminController")
+let user = require("./Controllers/UserController")
 
 const app = express ()
 
@@ -42,6 +43,9 @@ app.use((req, res, next) => {
 // Admin endpoints
 app.get("/auth/admin/callback", admin.login)
 app.get("/api/admin/admin-data", admin.checkAdminCred)
+
+// User endpoints
+app.get("/api/user/home-images", user.getHomeInfo)
 
 massive(CONNECTION_STRING).then(db => {
     app.set("db", db)

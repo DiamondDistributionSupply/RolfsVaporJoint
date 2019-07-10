@@ -9,7 +9,7 @@ class AdminHome extends Component {
         super()
 
         this.state = {
-            images: [],
+            imgs: [],
             description: ""
         }
     }
@@ -22,17 +22,44 @@ class AdminHome extends Component {
         }
         catch(err) {
             if (err.response.status === 403) {
+                console.log(err)
                 alert("unauthorized")
                 this.props.history.push("/admin/login")
             }
         }
+
+        try {
+            let infoRes = await axios.get("/api/user/home-images")
+            this.setState({
+                imgs: infoRes.data[0],
+                description: infoRes.data[1][0].description
+            })
+            console.log(infoRes)
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     render() {
+
+        let imgs = this.state.imgs.map((img, i) => {
+            return (
+                <div key={i}>
+                    <img src={img.img} alt="home"/>
+                    <button>edit</button>
+                </div>
+            )
+        })
+
         return (
             <div className="admin_home">
-                <div className="edit_images_container">
-                    
+                <div className="edit_home_images_container">
+                    {imgs}
+                </div>
+                <div className="edit_home_description_container">
+                    <p>{this.state.description}</p>
+                    <button>edit</button>
                 </div>
             </div>
         )
