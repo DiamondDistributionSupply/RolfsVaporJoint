@@ -4,9 +4,6 @@ module.exports = {
             const db = req.app.get("db")
 
             let imgs = await db.get_home_imgs()
-
-            console.log(imgs)
-
             let description = await db.get_home_description()
 
             res.status(200).send([imgs, description])

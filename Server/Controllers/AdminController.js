@@ -58,5 +58,35 @@ module.exports = {
             console.log(err)
             res.sendStatus(500)
         }
+    },
+
+    updateHomeImg: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+            const { img, id } = req.body
+
+            await db.update_home_img([img, id])
+
+            res.sendStatus(200)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
+
+    updateHomeDescription: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+            const { description } = req.body
+
+            await db.update_home_description([description])
+
+            res.sendStatus(200)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
     }
 }

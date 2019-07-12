@@ -1,2 +1,3 @@
-select img from home_imgs
+select * from home_imgs
+order by id
 limit 5

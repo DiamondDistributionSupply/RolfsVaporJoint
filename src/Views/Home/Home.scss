@@ -1,0 +1,13 @@
+@import "../../Styles/mixins.scss";
+@import "../../Styles//variables.scss";
+
+.carousel_container {
+    width: 100vw;
+    height: 535px;
+}
+
+.home_img {
+    height: 500px;
+    width: 750px;
+    object-fit: cover;
+}
