@@ -10,8 +10,8 @@ class Home extends Component {
         super()
 
         this.state = {
-            imgs: [],
-            description: ""
+            backgroundImg: { id: 1, img: ""},
+            imgs: []
         }
     }
 
@@ -19,8 +19,8 @@ class Home extends Component {
         try {
             let InfoRes = await axios.get("/api/user/home-info")
             this.setState({
-                imgs: InfoRes.data[0],
-                description: InfoRes.data[1][0].description
+                backgroundImg: InfoRes.data[0][0],
+                imgs: InfoRes.data[1]
             })
         }
         catch(err) {
@@ -51,20 +51,26 @@ class Home extends Component {
         :
         null
 
-        console.log(this.state)
+        const backgroundStyle = {
+            backgroundImage: `url(${this.state.backgroundImg.img})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+        }
+
         return (
-            <div>
-                <div className="site_banner">
+            <div id="home" style={backgroundStyle}>
+                <header className="site_banner">
                     <img src="" alt="logo" />
                     <p>Rolf's Vapor Joint</p>
                     <div></div>
-                </div>
+                </header>
                 <div className="carousel_container">
                     {carousel}
                 </div>
                 <div className="description_container">
                     <p>{this.state.description}</p>
                 </div>
+                <footer></footer>
             </div>
         )
     }

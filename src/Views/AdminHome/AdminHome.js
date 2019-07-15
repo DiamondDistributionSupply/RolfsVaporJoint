@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
 import { getAdminData } from "../../Ducks/reducer"
+import "./AdminHome.scss"
 
 class AdminHome extends Component {
     async componentDidMount() {
@@ -27,12 +28,18 @@ class AdminHome extends Component {
     render() {
         return (
             <div className="admin_home">
-                <div className="home_button_containers">
-                    <Link to="/admin/edit/home"><button>Edit Home Page</button></Link>
-                    {/* <Link> */}
-                        <button onClick={this.workInProgress}>View Products</button>
-                    {/* </Link> */}
-                    <button onClick={this.workInProgress}>Add a Product</button>
+                <div className="admin_home_button_containers">
+                    <div className="admin_home_top">
+                        <Link to="/admin/edit/home">
+                            <button className="admin_home_btn">Edit Home Page</button>
+                        </Link>
+                        {/* <Link> */}
+                            <button className="admin_home_btn" onClick={this.workInProgress}>View Products</button>
+                        {/* </Link> */}
+                    </div>
+                    <div className="admin_home_bottom">
+                        <button className="admin_home_btn" onClick={this.workInProgress}>Add a Product</button>
+                    </div>
                 </div>
             </div>
         )

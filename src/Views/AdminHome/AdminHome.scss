@@ -1,0 +1,31 @@
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
+
+.admin_home {
+    width: 100vw;
+    height: 100vh;
+}
+
+.admin_home_button_containers {
+    @include flex(column);
+    height: 70%;
+}
+
+.admin_home_top {
+    button {
+        margin-bottom: 50px;
+    }
+}
+
+.admin_home_top :nth-child(1) {
+    margin-right: 25px;
+}
+
+.admin_home_btn {
+    height: 12vh;
+    border-radius: $buttonRadius;
+    width: 120px;
+    @media only screen and (min-height: 900px) {
+        height: 10vh;
+    }
+}

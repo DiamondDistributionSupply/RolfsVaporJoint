@@ -1,0 +1,30 @@
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
+
+.admin_edit_home {
+    @include flex(column);
+    width: 100vw;
+}
+
+.edit_home_background_container {
+    @include flex(row, space-around, center);
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    img {
+        width: 200px;
+        height: 200px;
+    }
+    button {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.dropzone_container {
+    @include flex;
+    flex-wrap: wrap;
+}
+
+.edit_home_p {
+    margin-bottom: 10px;
+}

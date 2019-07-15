@@ -1,18 +1,22 @@
 import React, { Component } from "react"
 import axios from "axios"
 import { connect } from "react-redux"
+import Dropzone from "react-dropzone"
 
 import EditHomeImg from "../../ReusableComponents/EditHomeImg/EditHomeImg"
 import { getAdminData } from "../../Ducks/reducer"
+import AdminNavbar from "../../ReusableComponents/AdminNavbar/AdminNavbar"
+import "./AdminEditHome.scss"
 
 class AdminEditHome extends Component {
     constructor() {
         super()
 
         this.state = {
+            backgroundImg: {},
             imgs: [],
             description: "",
-            editing: false
+            editingBackground: false
         }
     }
 
@@ -33,8 +37,8 @@ class AdminEditHome extends Component {
         try {
             let infoRes = await axios.get("/api/user/home-info")
             this.setState({
-                imgs: infoRes.data[0],
-                description: infoRes.data[1][0].description
+                backgroundImg: infoRes.data[0][0],
+                imgs: infoRes.data[1]
             })
             console.log(infoRes)
         }
@@ -43,22 +47,59 @@ class AdminEditHome extends Component {
         }
     }
 
-    updateEditing = () => {
+    updateEditing = (e) => {
         this.setState({
-            editing: !this.state.editing
+            [e.target.name]: !this.state[e.target.name]
         })
     }
 
-    updateInput = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+    handleDrop = (files, rejectedFiles) => {
+        try {
+        const {
+            REACT_APP_CL_UPLOAD_PRESET,
+            REACT_APP_CL_API_KEY,
+            REACT_APP_CL_URL
+        } = process.env
 
-    updateDescription = async () => {
-        axios.put("/api/admin/home/description", { description: this.state.description })
-        this.updateEditing()
-        alert("Description updated")
+        if (rejectedFiles.length >= 1) {
+            // Let them know why files were rejected
+            let message = ""
+            if (rejectedFiles[0].size > 8000000) {
+                message = "Image is too big"
+            }
+            else {
+                message = "Wrong file type only images are accepted"
+            }
+            alert(message)
+            return
+        }
+        else {
+            const formData = new FormData()
+            formData.append("file", files[0])
+            formData.append("tags", "cloudinaryExample, medium, gist")
+            formData.append("upload_preset", `${REACT_APP_CL_UPLOAD_PRESET}`)
+            formData.append("api_key", `${REACT_APP_CL_API_KEY}`)
+            formData.append("timestamp", (Date.now() / 1000 | 0))
+
+            axios.post(`${REACT_APP_CL_URL}`, formData)
+            .then(res => {
+                console.log(res.data)
+                 this.setState({
+                    backgroundImg: {id: 1, img: res.data.secure_url}
+                })
+            })
+            .then(() => {
+                axios.put("/api/admin/home/background", { img: this.state.backgroundImg.img})
+            })
+            .then(() => {
+                this.updateEditing({target: {name: "editingBackground"}})
+                alert("Image updated")
+            })
+        }
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     render() {
@@ -72,32 +113,46 @@ class AdminEditHome extends Component {
         :
         null
 
+        const dropzoneStyle = {
+            height : "50px",
+            width : "100px",
+            marginLeft: "10px",
+            marginRight: "10px"
+        }
+
         return (
-            <div className="admin_home">
+            <div className="admin_edit_home">
+                <AdminNavbar />
                 <div className="edit_home_images_container">
-                    {imgs}
-                </div>
-                <div className="edit_home_description_container">
-                    {
-                    this.state.editing
-                    ?
-                    <div>
-                        <p>Description:</p>
-                        <input type="text"
-                        placeholder="Enter description"
-                        name="description"
-                        value={this.state.description}
-                        onChange={this.updateInput}/>
-                        <button onClick={this.updateDescription}>Save</button>
-                        <button onClick={this.updateEditing}>X</button>
+                    <p className="edit_home_p">Home Background</p>
+                    <div className="edit_home_background_container">
+                        <img src={this.state.backgroundImg.img} alt="home_background"/>
+                        {
+                            this.state.editingBackground ?
+                            <div className="dropzone_container">
+                                <Dropzone
+                                    style={dropzoneStyle}
+                                    onDrop={this.handleDrop}
+                                    accept="image/*"
+                                    multiple={false}
+                                    maxSize={8000000}
+                                >
+                                    <p>Drag images or click to upload</p>
+                                </Dropzone>
+                                <button className=""
+                                name="editingBackground"
+                                onClick={this.updateEditing}>X</button>
+                            </div>
+                            :
+                            <button className=""
+                            name="editingBackground"
+                            onClick={this.updateEditing}>edit</button>
+                        }
                     </div>
-                    :
-                    <div>
-                        <p>Description:</p>
-                        <p>{this.state.description}</p>
-                        <button onClick={this.updateEditing}>edit</button>
+                    <div className="edit_home_carousel_container">
+                        <p className="edit_home_p">Carousel Images</p>
+                        {imgs}
                     </div>
-                    }
                 </div>
             </div>
         )

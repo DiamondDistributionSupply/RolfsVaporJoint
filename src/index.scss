@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap");
+@import "./Styles/mixins.scss";
+@import "./Styles/variables.scss";
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -55,5 +57,12 @@ table {
 }
 
 button {
+	@include border;
 	font-family: "Josefin Slab", sans-serif;
+	background: $purple;
+	color: $white;
+	&:hover {
+		cursor: pointer;
+		background: $purpleHover;
+	}
 }

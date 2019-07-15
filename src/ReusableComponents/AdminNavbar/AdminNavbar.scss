@@ -1,0 +1,29 @@
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
+
+.admin_navbar {
+    @include flex;
+    width: 100vw;
+    height: 8vh;
+    background: $purple;
+    margin-bottom: 10px;
+}
+
+.navbar_button {
+    background: none;
+    border-top: none;
+    border-bottom: none;
+    height: 8vh;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.admin_navbar :nth-child(1) {
+    margin-left: 5px;
+}
+
+.admin_navbar :nth-child(4) {
+    margin-right: 10px;
+}

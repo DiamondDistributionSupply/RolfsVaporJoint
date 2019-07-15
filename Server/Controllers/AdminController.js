@@ -75,12 +75,12 @@ module.exports = {
         }
     },
 
-    updateHomeDescription: async (req, res) => {
+    updateHomeBackgroundImg: async (req, res) => {
         try {
             const db = req.app.get("db")
-            const { description } = req.body
+            const { img } = req.body
 
-            await db.update_home_description([description])
+            await db.update_home_bg_img([img])
 
             res.sendStatus(200)
         }

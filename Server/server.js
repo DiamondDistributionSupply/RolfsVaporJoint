@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 app.get("/auth/admin/callback", admin.login)
 app.get("/api/admin/admin-data", admin.checkAdminCred)
 app.put("/api/admin/home/img", admin.updateHomeImg)
-app.put("/api/admin/home/description", admin.updateHomeDescription)
+app.put("/api/admin/home/background", admin.updateHomeBackgroundImg)
 
 // User endpoints
 app.get("/api/user/home-info", user.getHomeInfo)

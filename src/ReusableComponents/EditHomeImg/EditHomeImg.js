@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import axios from "axios"
 import Dropzone from "react-dropzone"
 
+import "./EditHomeImg.scss"
+
 class EditHomeImg extends Component {
     constructor() {
         super()
@@ -28,7 +30,6 @@ class EditHomeImg extends Component {
 
     handleDrop = (files, rejectedFiles) => {
         try {
-            // Adds images to images array
         const {
             REACT_APP_CL_UPLOAD_PRESET,
             REACT_APP_CL_API_KEY,
@@ -79,15 +80,17 @@ class EditHomeImg extends Component {
     render() {
         const dropzoneStyle = {
             height : "50px",
-            width : "100px"
+            width : "100px",
+            marginLeft: "10px",
+            marginRight: "10px"
         }
         return (
-            <div>
+            <div className="edit_home_img">
                 <img src={this.state.img} alt="home"/>
                 {
                     this.state.editing
                     ?
-                    <div>
+                    <div className="dropzone_container">
                         <Dropzone
                             style={dropzoneStyle}
                             onDrop={this.handleDrop}

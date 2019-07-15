@@ -1,8 +1,13 @@
 @import "../../Styles/mixins.scss";
 @import "../../Styles//variables.scss";
 
-.carousel_container {
+#home {
     width: 100vw;
+    height: 100vh;
+}
+
+.carousel_container {
+    width: 50vw;
     height: 535px;
 }
 
@@ -10,4 +15,33 @@
     height: 500px;
     width: 750px;
     object-fit: cover;
+}
+
+.site_banner {
+    @include flex;
+    width: 100vw;
+    border-bottom: 1px solid $black;
+    height: 6vh;
+    background: $purple;
+    padding: 5px;
+    margin-bottom: 6px;
+    img {
+        width: 20px;
+        height: 20px;
+        padding-left: 5px;
+    }
+    p {
+        color: $white;
+        font-weight: bold;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    background: $purple;
+    width: 100vw;
+    height: 6vh;
 }

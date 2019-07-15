@@ -1,0 +1,12 @@
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
+
+
+.edit_home_img {
+    @include flex(row, center, center);
+    margin-bottom: 10px;
+    img {
+        width: 200px;
+        height: 200px;
+    }
+}
