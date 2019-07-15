@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 import { Carousel } from "react-responsive-carousel"
 
+import UserNavbar from "../../ReusableComponents/UserNavbar/UserNavbar"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import  "./Home.scss"
 
@@ -64,6 +65,7 @@ class Home extends Component {
                     <p>Rolf's Vapor Joint</p>
                     <div></div>
                 </header>
+                <UserNavbar />
                 <div className="carousel_container">
                     {carousel}
                 </div>

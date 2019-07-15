@@ -13,7 +13,7 @@ class AdminProduct extends Component {
     render() {
         return (
             <div>
-                <p>Admin Products Work In Progress</p>
+                <p>Admin Products Coming Soon</p>
             </div>
         )
     }

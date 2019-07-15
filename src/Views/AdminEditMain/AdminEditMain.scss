@@ -3,7 +3,7 @@
 
 .admin_edit_home {
     @include flex(column);
-    width: 100vw;
+    width: 97vw;
 }
 
 .edit_home_background_container {
@@ -27,4 +27,30 @@
 
 .edit_home_p {
     margin-bottom: 10px;
+}
+
+.edit_description_container {
+    @include flex;
+}
+
+.edit_description_p {
+    margin-right: 10px;
+}
+
+.edit_description {
+    @include flex;
+    p {
+        margin-right: 10px;
+    }
+}
+
+.edit_description_area {
+    @include flex;
+    textarea {
+        margin-right: 10px;
+    }
+}
+
+.edit_description_area :nth-child(2) {
+    margin-right: 10px;
 }

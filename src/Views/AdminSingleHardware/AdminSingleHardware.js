@@ -12,7 +12,7 @@ class AdminSingleHardware extends Component {
     render() {
         return (
             <div>
-                <p>Admin Single Hardware Work In Progress</p>
+                <p>Admin Single Hardware Coming Soon</p>
             </div>
         )
     }

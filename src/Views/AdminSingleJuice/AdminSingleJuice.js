@@ -12,7 +12,7 @@ class AdminSingleJuice extends Component {
     render() {
         return (
             <div>
-                <p>Admin Single Juice Work In Progress</p>
+                <p>Admin Single Juice Coming Soon</p>
             </div>
         )
     }

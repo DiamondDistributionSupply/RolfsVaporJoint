@@ -45,9 +45,11 @@ app.get("/auth/admin/callback", admin.login)
 app.get("/api/admin/admin-data", admin.checkAdminCred)
 app.put("/api/admin/home/img", admin.updateHomeImg)
 app.put("/api/admin/home/background", admin.updateHomeBackgroundImg)
+app.put("/api/admin/about/description", admin.updateAboutDescription)
 
 // User endpoints
 app.get("/api/user/home-info", user.getHomeInfo)
+app.get("/api/user/about/description", user.getAboutDescription)
 
 massive(CONNECTION_STRING).then(db => {
     app.set("db", db)

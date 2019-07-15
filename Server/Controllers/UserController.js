@@ -12,5 +12,19 @@ module.exports = {
             console.log(err)
             res.sendStatus(500)
         }
+    },
+
+    getAboutDescription: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+
+            let description = await db.get_about_description()
+
+            res.status(200).send(description)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
     }
 }

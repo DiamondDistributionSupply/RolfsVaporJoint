@@ -6,9 +6,9 @@ import Dropzone from "react-dropzone"
 import EditHomeImg from "../../ReusableComponents/EditHomeImg/EditHomeImg"
 import { getAdminData } from "../../Ducks/reducer"
 import AdminNavbar from "../../ReusableComponents/AdminNavbar/AdminNavbar"
-import "./AdminEditHome.scss"
+import "./AdminEditMain.scss"
 
-class AdminEditHome extends Component {
+class AdminEditMain extends Component {
     constructor() {
         super()
 
@@ -16,7 +16,8 @@ class AdminEditHome extends Component {
             backgroundImg: {},
             imgs: [],
             description: "",
-            editingBackground: false
+            editingBackground: false,
+            editingDescription: false
         }
     }
 
@@ -36,9 +37,11 @@ class AdminEditHome extends Component {
 
         try {
             let infoRes = await axios.get("/api/user/home-info")
+            let descriptionRes = await axios.get("/api/user/about/description")
             this.setState({
                 backgroundImg: infoRes.data[0][0],
-                imgs: infoRes.data[1]
+                imgs: infoRes.data[1],
+                description: descriptionRes.data[0].description
             })
             console.log(infoRes)
         }
@@ -102,6 +105,17 @@ class AdminEditHome extends Component {
         }
     }
 
+    updateInput = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    updateDescription = async () => {
+        await axios.put("/api/admin/about/description", {description: this.state.description})
+        this.updateEditing({target: {name: "editingDescription"}})
+    }
+
     render() {
         let imgs = this.state.imgs.length
         ? 
@@ -153,6 +167,31 @@ class AdminEditHome extends Component {
                         <p className="edit_home_p">Carousel Images</p>
                         {imgs}
                     </div>
+                    <div className="edit_description_container">
+                        <p className="edit_description_p">Description:</p>
+                        {
+                            this.state.editingDescription
+                            ?
+                            <div className="edit_description_area">
+                                <textarea className="editing_description"
+                                placeholder="Enter Description" 
+                                name="description"
+                                value={this.state.description}
+                                onChange={this.updateInput} 
+                                cols="30" 
+                                rows="10"></textarea>
+                                <button onClick={this.updateDescription}>Save</button>
+                                <button name="editingDescription" 
+                                onClick={this.updateEditing}>X</button>
+                            </div>
+                            :
+                            <div className="edit_description">
+                                <p>{this.state.description}</p>
+                                <button name="editingDescription"
+                                onClick={this.updateEditing}>Edit</button>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         )
@@ -171,4 +210,4 @@ const actionOutputs = {
 
 const connected = connect(mapStateToProps, actionOutputs)
 
-export default connected(AdminEditHome)
+export default connected(AdminEditMain)

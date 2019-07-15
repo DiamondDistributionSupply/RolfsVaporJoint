@@ -30,8 +30,8 @@ class AdminHome extends Component {
             <div className="admin_home">
                 <div className="admin_home_button_containers">
                     <div className="admin_home_top">
-                        <Link to="/admin/edit/home">
-                            <button className="admin_home_btn">Edit Home Page</button>
+                        <Link to="/admin/edit/main">
+                            <button className="admin_home_btn">Edit Main Info</button>
                         </Link>
                         {/* <Link> */}
                             <button className="admin_home_btn" onClick={this.workInProgress}>View Products</button>
