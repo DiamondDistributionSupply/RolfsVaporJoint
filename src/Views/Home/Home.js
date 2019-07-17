@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 import { Carousel } from "react-responsive-carousel"
 
+import SiteBanner from "../../ReusableComponents/SiteBanner/SiteBanner"
 import UserNavbar from "../../ReusableComponents/UserNavbar/UserNavbar"
 import UserFooter from "../../ReusableComponents/UserFooter/UserFooter"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
@@ -61,11 +62,7 @@ class Home extends Component {
 
         return (
             <div id="home" style={backgroundStyle}>
-                <header className="site_banner">
-                    <img src="" alt="logo" />
-                    <p>Rolf's Vapor Joint</p>
-                    <div></div>
-                </header>
+                <SiteBanner />
                 <UserNavbar />
                 <div className="ccc">
                     <div className="carousel_container">

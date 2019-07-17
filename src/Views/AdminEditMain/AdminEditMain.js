@@ -6,6 +6,7 @@ import Dropzone from "react-dropzone"
 import EditHomeImg from "../../ReusableComponents/EditHomeImg/EditHomeImg"
 import { getAdminData } from "../../Ducks/reducer"
 import AdminNavbar from "../../ReusableComponents/AdminNavbar/AdminNavbar"
+import SiteBanner from "../../ReusableComponents/SiteBanner/SiteBanner"
 import "./AdminEditMain.scss"
 
 class AdminEditMain extends Component {
@@ -136,6 +137,7 @@ class AdminEditMain extends Component {
 
         return (
             <div className="admin_edit_home">
+                <SiteBanner />
                 <AdminNavbar />
                 <div className="edit_home_images_container">
                     <p className="edit_home_p">Home Background</p>

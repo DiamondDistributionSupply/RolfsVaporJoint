@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
 import { getAdminData } from "../../Ducks/reducer"
+import SiteBanner from "../../ReusableComponents/SiteBanner/SiteBanner"
 import "./AdminHome.scss"
 
 class AdminHome extends Component {
@@ -28,6 +29,7 @@ class AdminHome extends Component {
     render() {
         return (
             <div className="admin_home">
+                <SiteBanner />
                 <div className="admin_home_button_containers">
                     <div className="admin_home_top">
                         <Link to="/admin/edit/main">

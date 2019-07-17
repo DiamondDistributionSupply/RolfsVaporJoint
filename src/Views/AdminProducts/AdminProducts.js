@@ -1,5 +1,8 @@
 import React, { Component } from "react"
 
+import SiteBanner from "../../ReusableComponents/SiteBanner/SiteBanner"
+import AdminNavbar from "../../ReusableComponents/AdminNavbar/AdminNavbar"
+
 class AdminProduct extends Component {
     constructor() {
         super()
@@ -13,6 +16,8 @@ class AdminProduct extends Component {
     render() {
         return (
             <div>
+                <SiteBanner />
+                <AdminNavbar />
                 <p>Admin Products Coming Soon</p>
             </div>
         )

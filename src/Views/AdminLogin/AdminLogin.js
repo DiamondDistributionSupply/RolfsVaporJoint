@@ -1,5 +1,6 @@
 import React from "react"
 
+import SiteBanner from "../../ReusableComponents/SiteBanner/SiteBanner"
 import "./AdminLogin.scss"
 
 let login = () => {
@@ -23,11 +24,7 @@ let login = () => {
 function AdminLogin(props) {
     return (
         <div className="admin_login">
-            <div className="site_banner">
-                <img src="" alt="logo" />
-                <p>Rolf's Vapor Joint</p>
-                <div></div>
-            </div>
+            <SiteBanner />
             <div class="login_container">
                 <button class="button" onClick={login}>Login</button>
             </div>
