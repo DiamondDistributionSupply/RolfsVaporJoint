@@ -14,13 +14,14 @@ module.exports = {
         }
     },
 
-    getAboutDescription: async (req, res) => {
+    getAboutInfo: async (req, res) => {
         try {
             const db = req.app.get("db")
 
+            let background = await db.get_home_bg_img()
             let description = await db.get_about_description()
 
-            res.status(200).send(description)
+            res.status(200).send([background, description])
         }
         catch(err) {
             console.log(err)

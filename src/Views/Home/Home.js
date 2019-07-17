@@ -3,6 +3,7 @@ import axios from "axios"
 import { Carousel } from "react-responsive-carousel"
 
 import UserNavbar from "../../ReusableComponents/UserNavbar/UserNavbar"
+import UserFooter from "../../ReusableComponents/UserFooter/UserFooter"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import  "./Home.scss"
 
@@ -66,13 +67,15 @@ class Home extends Component {
                     <div></div>
                 </header>
                 <UserNavbar />
-                <div className="carousel_container">
-                    {carousel}
+                <div className="ccc">
+                    <div className="carousel_container">
+                        {carousel}
+                    </div>
                 </div>
                 <div className="description_container">
                     <p>{this.state.description}</p>
                 </div>
-                <footer></footer>
+                <UserFooter />
             </div>
         )
     }

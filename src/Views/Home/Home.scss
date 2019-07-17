@@ -4,17 +4,34 @@
 #home {
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 .carousel_container {
-    width: 50vw;
+    position: relative;
+    bottom: 20px;
+    width: 80vw;
     height: 535px;
+    @media only screen and (min-height: 800px) {
+        bottom: 100px;
+    }
+    @media only screen and (min-height: 900px) {
+        bottom: 150px;
+    }
+    @media only screen and (min-height: 1025px) {
+        bottom: 210px;
+    }
 }
 
 .home_img {
-    height: 500px;
-    width: 750px;
+    height: 400px;
     object-fit: cover;
+    @media only screen and (min-width: 950px) {
+        height: 500px;
+    }
+    @media only screen and (min-width: 1200px) {
+        height: 600px;
+    }
 }
 
 .site_banner {
@@ -38,10 +55,8 @@
     }
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    background: $purple;
+.ccc {
+    @include flex;
     width: 100vw;
-    height: 6vh;
+    height: 100%;
 }

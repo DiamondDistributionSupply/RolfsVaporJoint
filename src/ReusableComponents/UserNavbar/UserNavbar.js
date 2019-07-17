@@ -62,7 +62,7 @@ class UserNavbar extends Component {
                 >
                     <p>Products</p>
                     <div className="products_list" style={this.state.productsListStyle}>
-                        <p>List</p>
+                        <p>Coming Soon</p>
                     </div>
                 </div>
                 <div className="navbar_fst navbar_btn"

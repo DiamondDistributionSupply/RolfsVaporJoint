@@ -30,6 +30,30 @@
     }
 }
 
-.products_list, .locations_list, .contact_list {
-    color: black;
+.products_list, .locations_list {
+    position: relative;
+    z-index: 2;
+    @include border;
+    @include shadow;
+    height: 100px;
+    background: $purple;
+    margin-left: -17px;
+    margin-right: -90px;
+    padding: 5px;
+}
+
+.navbar_btn p {
+    margin-bottom: 5px;
+}
+
+.contact_list {
+    position: relative;
+    z-index: 2;
+    @include border;
+    @include shadow;
+    height: 100px;
+    background: $purple;
+    margin-left: -101px;
+    margin-right: -6px;
+    padding: 5px;
 }

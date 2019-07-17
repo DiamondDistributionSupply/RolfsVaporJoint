@@ -49,7 +49,7 @@ app.put("/api/admin/about/description", admin.updateAboutDescription)
 
 // User endpoints
 app.get("/api/user/home-info", user.getHomeInfo)
-app.get("/api/user/about/description", user.getAboutDescription)
+app.get("/api/user/about-info", user.getAboutInfo)
 
 massive(CONNECTION_STRING).then(db => {
     app.set("db", db)

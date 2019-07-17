@@ -1,0 +1,28 @@
+@import "../../Styles//mixins.scss";
+@import "../../Styles/variables.scss";
+
+footer {
+    @include flex(row, space-between);
+    position: absolute;
+    bottom: 0;
+    background: $purple;
+    color: $white;
+    width: 100vw;
+    height: 10vh;
+    padding: 10px;
+}
+
+.site_name {
+    font-weight: bold;
+}
+
+.footer_location, .footer_contact {
+    @include flex;
+    p {
+        margin-right: 10px;
+    }
+}
+
+.footer_site_name, .footer_location, .footer_contact {
+    margin-right: 10px;
+}
