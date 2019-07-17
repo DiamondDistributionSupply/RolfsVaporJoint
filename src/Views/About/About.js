@@ -25,7 +25,9 @@ class About extends Component {
 
     render() {
         let backgroundImg = {
-            backgroundImage: `url(${this.state.backgroundImg.img})`
+            backgroundImage: `url(${this.state.backgroundImg.img})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
         }
         return (
             <div className="about" style={backgroundImg}>

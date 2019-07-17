@@ -5,7 +5,7 @@
     @include flex;
     width: 100%;
     height: 6vh;
-    background: $purple;
+    background: $purpleOpaque;
 }
 
 .navbar_fst {
@@ -14,32 +14,44 @@
 
 .navbar_btn {
     height: 6vh;
-    border-top: none;
-    border-bottom: none;
+    background: none;
+    border: none;
     color: $white;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
     padding: 5px;
     vertical-align: middle !important;
     &:hover {
         cursor: pointer;
-        background: $purpleHover;
+        color: $turquoiseHover;
+        background: none;
     }
     p {
         line-height: 5vh;
     }
 }
 
-.products_list, .locations_list {
+.products_list, .locations_list, .contact_list {
     position: relative;
     z-index: 2;
     @include border;
     @include shadow;
-    height: 100px;
     background: $purple;
+    padding: 5px;
+    color: $white;
+}
+
+.products_list {
+    height: 100px;
     margin-left: -17px;
     margin-right: -90px;
-    padding: 5px;
+}
+
+.locations_list {
+    height: 160px;
+    margin-left: -17px;
+    margin-right: -115px;
+    @media only screen and (min-width: 550px) {
+        margin-right: -255px;
+    }
 }
 
 .navbar_btn p {
@@ -47,13 +59,7 @@
 }
 
 .contact_list {
-    position: relative;
-    z-index: 2;
-    @include border;
-    @include shadow;
-    height: 100px;
-    background: $purple;
-    margin-left: -101px;
+    height: 130px;
+    margin-left: -110px;
     margin-right: -6px;
-    padding: 5px;
 }

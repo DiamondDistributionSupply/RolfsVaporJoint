@@ -17,9 +17,10 @@ footer {
 }
 
 .footer_location, .footer_contact {
-    @include flex;
+    @include flex(column, center, flex-start);
     p {
         margin-right: 10px;
+        margin-bottom: 10px;
     }
 }
 
