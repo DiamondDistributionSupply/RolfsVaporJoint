@@ -3,6 +3,7 @@ import axios from "axios"
 
 import UserNavbar from "../../ReusableComponents/UserNavbar/UserNavbar"
 import UserFooter from "../../ReusableComponents/UserFooter/UserFooter"
+import owner from "./RP.jpg"
 import "./About.scss"
 
 class About extends Component {
@@ -33,7 +34,7 @@ class About extends Component {
             <div className="about" style={backgroundImg}>
                 <UserNavbar />
                 <div className="about_info_container">
-                    <img src="" alt="rolf"/>
+                    <img src={owner} alt="rolf"/>
                     <p>{this.state.description}</p>
                 </div>
                 <div></div>

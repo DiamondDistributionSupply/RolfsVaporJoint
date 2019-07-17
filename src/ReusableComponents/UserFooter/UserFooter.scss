@@ -8,8 +8,11 @@ footer {
     background: $purple;
     color: $white;
     width: 100vw;
-    height: 10vh;
+    height: 12vh;
     padding: 10px;
+    @media only screen and (min-width: 1060px) {
+        height: 10vh;
+    }
 }
 
 .site_name {
@@ -21,6 +24,10 @@ footer {
     p {
         margin-right: 10px;
         margin-bottom: 10px;
+        font-size: 8px;
+        @media only screen and (min-width: 650px) {
+            font-size: 15px;
+        }
     }
 }
 
