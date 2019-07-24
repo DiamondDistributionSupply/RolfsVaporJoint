@@ -38,11 +38,11 @@ class AdminEditMain extends Component {
 
         try {
             let infoRes = await axios.get("/api/user/home-info")
-            let descriptionRes = await axios.get("/api/user/about/description")
+            let descriptionRes = await axios.get("/api/user/about-info")
             this.setState({
                 backgroundImg: infoRes.data[0][0],
                 imgs: infoRes.data[1],
-                description: descriptionRes.data[0].description
+                description: descriptionRes.data[1][0].description
             })
             console.log(infoRes)
         }
