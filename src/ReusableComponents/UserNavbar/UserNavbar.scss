@@ -31,7 +31,7 @@
 
 .products_list, .locations_list, .contact_list {
     position: relative;
-    z-index: 2;
+    z-index: 5;
     @include border;
     @include shadow;
     background: $purple;
@@ -46,16 +46,20 @@
 }
 
 .locations_list {
-    height: 160px;
+    height: 200px;
     margin-left: -17px;
     margin-right: -115px;
     @media only screen and (min-width: 550px) {
         margin-right: -255px;
     }
-}
-
-.navbar_btn p {
-    margin-bottom: 5px;
+    button {
+        background: #427CF1;
+        border-radius: $buttonRadius;
+        &:hover {
+            cursor: pointer;
+            background: #0046d4;
+        }
+    }
 }
 
 .contact_list {

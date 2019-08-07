@@ -50,6 +50,12 @@ class UserNavbar extends Component {
         })
     }
 
+    getDirections = (e, address) => {
+        e.stopPropagation()
+        let url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+        window.open(url, "_blank")
+    }
+
     render() {
         return (
             <div className="user_navbar">
@@ -72,7 +78,9 @@ class UserNavbar extends Component {
                     <p>Locations</p>
                     <div className="locations_list" style={this.state.locationsListStyle}>
                         <p>Provo: 895 S University Ave, Provo, UT 84601</p>
+                        <button onClick={ (e) => this.getDirections(e, "895 S University Ave, Provo, UT 84601")}>Get Directions</button>
                         <p>Orem: 016 Industrial Park Rd, Orem, UT 84057</p>
+                        <button onClick={(e) => this.getDirections(e, "016 Industrial Park Rd, Orem, UT 84057")}>Get Directions</button>
                     </div>
                 </div>
                 <Link className="navbar_fst"  to="/about">

@@ -34,8 +34,12 @@ class About extends Component {
             <div className="about" style={backgroundImg}>
                 <UserNavbar />
                 <div className="about_info_container">
-                    <img src={owner} alt="rolf"/>
-                    <p>{this.state.description}</p>
+                    <div className="about_img_container">
+                        <img src={owner} alt="rolf"/>
+                    </div>
+                    <div className="about_description_container">
+                        <p>{this.state.description}</p>
+                    </div>
                 </div>
                 <div></div>
                 <UserFooter />
