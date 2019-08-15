@@ -10,7 +10,9 @@ class UserNavbar extends Component {
         this.state = {
             productsListStyle: { display: "none" },
             locationsListStyle: { display: "none" },
-            contactListStyle: { display: "none" }
+            contactListStyle: { display: "none" },
+            productsJuiceStyle: { display: "none" },
+            productsHardwareStyle: { display: "none" }
         }
     }
 
@@ -40,13 +42,38 @@ class UserNavbar extends Component {
 
     onContactEnter = () => {
         this.setState({
-            contactListStyle: {display: "block"}
+            contactListStyle: { display: "block" }
         })
     }
 
     onContactLeave = () => {
         this.setState({
             contactListStyle: { display: "none" }
+        })
+    }
+
+    onJuiceEnter = () => {
+        this.setState({
+            productsJuiceStyle: { display: "block" }
+        })
+    }
+
+    onJuiceLeave = () => {
+        console.log("fired")
+        this.setState({
+            productsJuiceStyle: { display: "none" }
+        })
+    }
+
+    onHardwareEnter = () => {
+        this.setState({
+            productsHardwareStyle: { display: "block" }
+        })
+    }
+
+    onHardwareLeave = () => {
+        this.setState({
+            productsHardwareStyle: { display: "none" }
         })
     }
 
@@ -57,21 +84,39 @@ class UserNavbar extends Component {
     }
 
     render() {
+        console.log(this.state.productsJuiceStyle)
         return (
             <div className="user_navbar">
                 <Link className="navbar_fst" to="/">
-                    <button className="navbar_btn">Home</button>
+                    <button className="navbar_btn navbar_hover">Home</button>
                 </Link>
-                <div className="navbar_fst navbar_btn"
+                <div className="navbar_fst navbar_btn navbar_hover"
                 onMouseEnter={this.onProductEnter}
                 onMouseLeave={this.onProductLeave}
                 >
                     <p>Products</p>
                     <div className="products_list" style={this.state.productsListStyle}>
-                        <p>Coming Soon</p>
+                        <div className="navbar_hover"
+                        onMouseOver={this.onJuiceEnter}
+                        onMouseOut={this.onJuiceLeave}
+                        >
+                            <p>Juices</p>
+                            <div className="products_list_juices" style={this.state.productsJuiceStyle}>
+                                <p>juice stuff</p>
+                            </div>
+                        </div>
+                        <div className="navbar_hover"
+                        onMouseEnter={this.onHardwareEnter}
+                        onMouseLeave={this.onHardwareLeave}
+                        >
+                            <p>Hardware</p>
+                            <div className="products_list_hardware" style={this.state.productsHardwareStyle}>
+                                <p>hardware stuff</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="navbar_fst navbar_btn"
+                <div className="navbar_fst navbar_btn navbar_hover"
                 onMouseEnter={this.onLocationEnter}
                 onMouseLeave={this.onLocationLeave}
                 >
@@ -84,9 +129,9 @@ class UserNavbar extends Component {
                     </div>
                 </div>
                 <Link className="navbar_fst"  to="/about">
-                    <button className="navbar_btn">About</button>
+                    <button className="navbar_btn navbar_hover">About</button>
                 </Link>
-                <div className="navbar_btn"
+                <div className="navbar_btn navbar_hover"
                 onMouseEnter={this.onContactEnter}
                 onMouseLeave={this.onContactLeave}
                 >
