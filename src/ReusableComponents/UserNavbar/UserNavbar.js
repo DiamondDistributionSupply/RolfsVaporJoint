@@ -54,12 +54,11 @@ class UserNavbar extends Component {
 
     onJuiceEnter = () => {
         this.setState({
-            productsJuiceStyle: { display: "block" }
+            productsJuiceStyle: { display: "flex" }
         })
     }
 
     onJuiceLeave = () => {
-        console.log("fired")
         this.setState({
             productsJuiceStyle: { display: "none" }
         })
@@ -67,7 +66,7 @@ class UserNavbar extends Component {
 
     onHardwareEnter = () => {
         this.setState({
-            productsHardwareStyle: { display: "block" }
+            productsHardwareStyle: { display: "flex" }
         })
     }
 
@@ -84,7 +83,6 @@ class UserNavbar extends Component {
     }
 
     render() {
-        console.log(this.state.productsJuiceStyle)
         return (
             <div className="user_navbar">
                 <Link className="navbar_fst" to="/">
@@ -102,7 +100,8 @@ class UserNavbar extends Component {
                         >
                             <p>Juices</p>
                             <div className="products_list_juices" style={this.state.productsJuiceStyle}>
-                                <p>juice stuff</p>
+                                <button className="navbar_hover">E-juices</button>
+                                <button className="navbar_hover">Salts</button>
                             </div>
                         </div>
                         <div className="navbar_hover"
@@ -111,7 +110,8 @@ class UserNavbar extends Component {
                         >
                             <p>Hardware</p>
                             <div className="products_list_hardware" style={this.state.productsHardwareStyle}>
-                                <p>hardware stuff</p>
+                                <button className="navbar_hover">tanks</button>
+                                <button className="navbar_hover">coils</button>
                             </div>
                         </div>
                     </div>
