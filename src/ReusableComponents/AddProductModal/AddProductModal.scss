@@ -1,0 +1,186 @@
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
+
+.add_product_none {
+    display: none;
+}
+
+.add_product_display {
+    @include flex($justify: space-between);
+    background: $greyModal;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden
+}
+
+.add_product_content {
+    @include flex(column, flex-start, flex-end);
+    @include shadow;
+    background: $white;
+    width: 95%;
+    height: 80%;
+    button {
+        @include border;
+        background: $purple;
+        color: $white;
+        border-top: none;
+        border-right: none;
+        &:hover {
+            cursor: pointer;
+            background: $purpleHover;
+        }
+    }
+    div {
+        @include flex(column, flex-start);
+        width: 100%;
+        height: 90%;
+    }
+}
+
+#product_type {
+    @include flex($direction: row, $align: flex-start);
+    width: 100%;
+    height: 10%;
+    p {
+        margin-right: 10px;
+    }
+}
+
+.product_select {
+    float: left;
+}
+
+.add_juice_content {
+    overflow: auto;
+    div {
+        @include flex(row, center, flex-start);
+        width: 95%;
+        height: 5%;
+        margin-bottom: 10px;
+        p {
+            margin-right: 10px;
+        }
+    }
+}
+
+.add_text_area {
+    height: 26% !important;
+}
+
+.add_product_btn {
+    width: 75px !important;
+}
+
+.required_field {
+    color: red;
+}
+
+.required_container {
+    height: 15% !important;
+}
+
+#add_flavor_profile {
+    margin-left: -16px;
+}
+
+.flavor_required {
+    position: relative;
+    right: 6px;
+}
+
+.add_size {
+    margin-left: -5px;
+}
+
+.add_nicotine {
+    margin-left: -31px;
+}
+
+.nicotine_required {
+    position: relative;
+    right: 25px;
+}
+
+.add_package {
+    margin-left: -9px;
+}
+
+.add_other {
+    margin-left: 9px;
+
+}
+
+.add_price {
+    margin-left: -8px;
+}
+
+#add_flavor_instructions {
+    height: 10%;
+    margin-left: 20px;
+}
+
+.add_hardware_content {
+    overflow: auto;
+    div {
+        @include flex(row, center, flex-start);
+        width: 95%;
+        height: 5%;
+        margin-bottom: 10px;
+        p {
+            margin-right: 10px;
+        }
+    }
+}
+
+.btn {
+    border: 1px solid black !important;
+    background: $purple !important;
+    color: $white !important;
+    border-radius: 10px !important;
+    padding: 5px !important;
+}
+
+.add_hardware_type {
+    height: 10% !important;
+}
+
+.add_name {
+    margin-left: -11px !important;
+}
+
+.add_name_required {
+    position: relative;
+    right: 10px;
+}
+
+#add_attributes_instructions {
+    height: 10%;
+    margin-left: 20px;
+}
+
+.add_hardware_price {
+    margin-left: -16px;
+}
+
+.add_hardware_price_required {
+    position: relative;
+    right: 15px;
+}
+
+.dropzone_container {
+    height: 50px !important;
+    width: 95% !important;
+}
+
+.add_images {
+    margin-left: -93px;
+}
+
+.add_images_required {
+    position: relative;
+    right: 87px;
+}

@@ -1,0 +1,1 @@
+select * from hardware_types

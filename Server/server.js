@@ -41,15 +41,32 @@ app.use((req, res, next) => {
 })
 
 // Admin endpoints
+
+    // Get endpoints
 app.get("/auth/admin/callback", admin.login)
 app.get("/api/admin/admin-data", admin.checkAdminCred)
+app.get("/api/admin/get/juice-types", admin.getJuiceTypes)
+app.get("/api/admin/get/hardware-types", admin.getHardwareTypes)
+
+    // Post endpoints
+app.post("/api/admin/add/juice-type", admin.addJuiceType)
+app.post("/api/admin/add/hardware-type", admin.addHardwareType)
+app.post("/api/admin/add/juice", admin.addJuice)
+app.post("/api/admin/add/hardware", admin.addHardware)
+    
+    // Put endpoints
 app.put("/api/admin/home/img", admin.updateHomeImg)
 app.put("/api/admin/home/background", admin.updateHomeBackgroundImg)
 app.put("/api/admin/about/description", admin.updateAboutDescription)
 
+    // Delete endpoints
+
 // User endpoints
+
+    // Get endpoints
 app.get("/api/user/home-info", user.getHomeInfo)
 app.get("/api/user/about-info", user.getAboutInfo)
+app.get("/api/user/product-types", user.getProductTypes)
 
 massive(CONNECTION_STRING).then(db => {
     app.set("db", db)

@@ -103,5 +103,123 @@ module.exports = {
             console.log(err)
             res.sendStatus(500)
         }
+    },
+
+    getJuiceTypes: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+
+            let juiceTypes = await db.get_juice_types()
+
+            res.status(200).send(juiceTypes)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
+
+    getHardwareTypes: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+
+            let hardwareTypes =  await db.get_hardware_types()
+
+            res.status(200).send(hardwareTypes)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
+
+    addJuiceType: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+            const { name } = req.body
+
+            await db.add_juice_type([name])
+
+            res.sendStatus(200)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
+
+    addHardwareType: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+            const { name } = req.body
+
+            await db.add_hardware_type([name])
+
+            res.sendStatus(200)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
+
+    addJuice: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+            const {
+                name,
+                description,
+                flavorProfile,
+                size,
+                nicotine,
+                type,
+                otherDetails,
+                price,
+                images,
+                brand
+            } = req.body.productInfo
+
+            let productId = await db.add_juice([name, description, flavorProfile, type, otherDetails, brand])
+
+            await db.add_juice_variation([productId[0].id, size, nicotine, price])
+
+            for(let i = 0; i < images.length; i++) {
+                await db.add_juice_images([productId[0].id, images[i]])
+            }
+
+            res.status(200).send(productId)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
+
+    addHardware: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+            const {
+                type,
+                name,
+                description,
+                attributes,
+                otherDetails,
+                price,
+                images,
+                brand
+            } = req.body.productInfo
+
+            let productId = await db.add_hardware([type, name, description, attributes, otherDetails, price, brand])
+
+            for(let i = 0; i < images.length; i++) {
+                await db.add_hardware_images([productId[0].id, images[i]])
+            }
+
+            res.status(200).send(productId)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
     }
 }

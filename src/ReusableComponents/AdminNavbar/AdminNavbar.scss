@@ -9,15 +9,16 @@
     margin-bottom: 10px;
 }
 
-.navbar_button {
+.admin_navbar_btn {
     background: none;
-    border-top: none;
-    border-bottom: none;
+    border: none;
     height: 8vh;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
     margin-left: 5px;
     margin-right: 5px;
+    &:hover {
+        background: none;
+        color: $turquoiseHover;
+    }
 }
 
 .admin_navbar :nth-child(1) {

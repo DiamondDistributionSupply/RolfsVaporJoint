@@ -27,5 +27,20 @@ module.exports = {
             console.log(err)
             res.sendStatus(500)
         }
+    },
+
+    getProductTypes: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+
+            let juiceTypes = await db.get_juice_types()
+            let hardwareTypes = await db.get_hardware_types()
+
+            res.status(200).send([juiceTypes, hardwareTypes])
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
     }
 }

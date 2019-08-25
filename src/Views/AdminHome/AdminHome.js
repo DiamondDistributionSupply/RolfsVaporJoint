@@ -4,10 +4,19 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
 import { getAdminData } from "../../Ducks/reducer"
+import AddProductModal from "../../ReusableComponents/AddProductModal/AddProductModal"
 import SiteBanner from "../../ReusableComponents/SiteBanner/SiteBanner"
 import "./AdminHome.scss"
 
 class AdminHome extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            show: false
+        }
+    }
+
     async componentDidMount() {
         // Make sure authorized admin is logged in
         try {
@@ -26,6 +35,12 @@ class AdminHome extends Component {
         alert("Work In Progress")
     }
 
+    toggleShow = () => {
+        this.setState({
+            show: !this.state.show
+        })
+    }
+
     render() {
         return (
             <div className="admin_home">
@@ -40,9 +55,10 @@ class AdminHome extends Component {
                         {/* </Link> */}
                     </div>
                     <div className="admin_home_bottom">
-                        <button className="admin_home_btn" onClick={this.workInProgress}>Add a Product</button>
+                        <button className="admin_home_btn" onClick={this.toggleShow}>Add a Product</button>
                     </div>
                 </div>
+                <AddProductModal show={this.state.show} toggleShow={this.toggleShow} />
             </div>
         )
     }

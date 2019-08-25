@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Link, withRouter } from "react-router-dom"
+import axios from "axios"
 
 import "./UserNavbar.scss"
 
@@ -12,8 +13,18 @@ class UserNavbar extends Component {
             locationsListStyle: { display: "none" },
             contactListStyle: { display: "none" },
             productsJuiceStyle: { display: "none" },
-            productsHardwareStyle: { display: "none" }
+            productsHardwareStyle: { display: "none" },
+            juiceTypes: [],
+            hardwareTypes: []
         }
+    }
+
+    async componentDidMount() {
+        let types = await axios.get("/api/user/product-types")
+        this.setState({
+            juiceTypes: types.data[0],
+            hardwareTypes: types.data[1]
+        })
     }
 
     onProductEnter = () => {
@@ -83,6 +94,17 @@ class UserNavbar extends Component {
     }
 
     render() {
+        const juiceTypeBtns = this.state.juiceTypes.map((type, i) => {
+            return (
+                <button key={i}>{type.name}</button>
+            )
+        })
+        const hardwareTypeBtns = this.state.hardwareTypes.map((type, i) => {
+            return (
+                <button key={i}>{type.name}</button>
+            )
+        })
+        
         return (
             <div className="user_navbar">
                 <Link className="navbar_fst" to="/">
@@ -100,8 +122,7 @@ class UserNavbar extends Component {
                         >
                             <p>Juices</p>
                             <div className="products_list_juices" style={this.state.productsJuiceStyle}>
-                                <button className="navbar_hover">E-juices</button>
-                                <button className="navbar_hover">Salts</button>
+                                {juiceTypeBtns}
                             </div>
                         </div>
                         <div className="navbar_hover"
@@ -110,8 +131,7 @@ class UserNavbar extends Component {
                         >
                             <p>Hardware</p>
                             <div className="products_list_hardware" style={this.state.productsHardwareStyle}>
-                                <button className="navbar_hover">tanks</button>
-                                <button className="navbar_hover">coils</button>
+                                {hardwareTypeBtns}
                             </div>
                         </div>
                     </div>
