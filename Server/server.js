@@ -47,6 +47,7 @@ app.get("/auth/admin/callback", admin.login)
 app.get("/api/admin/admin-data", admin.checkAdminCred)
 app.get("/api/admin/get/juice-types", admin.getJuiceTypes)
 app.get("/api/admin/get/hardware-types", admin.getHardwareTypes)
+app.get("/api/admin/get/background", admin.getBackground)
 
     // Post endpoints
 app.post("/api/admin/add/juice-type", admin.addJuiceType)

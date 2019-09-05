@@ -221,5 +221,19 @@ module.exports = {
             console.log(err)
             res.sendStatus(500)
         }
+    },
+
+    getBackground: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+
+            let background = await db.get_home_bg_img()
+
+            res.status(200).send(background)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
     }
 }

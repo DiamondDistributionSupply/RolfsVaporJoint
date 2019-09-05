@@ -13,7 +13,8 @@ class AdminHome extends Component {
         super()
 
         this.state = {
-            show: false
+            show: false,
+            backgroundImg: {id: 1, img: ""}
         }
     }
 
@@ -29,6 +30,12 @@ class AdminHome extends Component {
                 this.props.history.push("/admin/login")
             }
         }
+
+        // After checking cred grab needed assets
+        let backgroundRes = await axios.get("/api/admin/get/background")
+        this.setState({
+            backgroundImg: backgroundRes.data[0]
+        })
     }
 
     workInProgress = () => {
@@ -42,8 +49,14 @@ class AdminHome extends Component {
     }
 
     render() {
+        const backgroundStyle = {
+            backgroundImage: `url(${this.state.backgroundImg.img})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+        }
+
         return (
-            <div className="admin_home">
+            <div className="admin_home" style={backgroundStyle}>
                 <SiteBanner />
                 <div className="admin_home_button_containers">
                     <div className="admin_home_top">

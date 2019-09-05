@@ -24,14 +24,6 @@
     }
 }
 
-.navbar_hover {
-    &:hover {
-        cursor: pointer;
-        color: $turquoiseHover;
-        background: none;
-    }
-}
-
 .products_list, .locations_list, .contact_list {
     position: relative;
     z-index: 5;

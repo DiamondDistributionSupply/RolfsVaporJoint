@@ -1,12 +1,12 @@
 import React from "react"
-import logo from "./RVJLogo.png"
+// import logo from "./RVJLogo.png"
 
 import "./SiteBanner.scss"
 
 function SiteBanner() {
     return (
         <header className="site_banner">
-            <img src={logo} alt="logo" />
+            <div></div>
             <p>Rolf's Vapor Joint</p>
             <div></div>
         </header>

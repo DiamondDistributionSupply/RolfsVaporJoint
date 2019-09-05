@@ -8,6 +8,7 @@
 }
 
 .login_container {
+    background: $white;
     @include flex;
     height: 15vh;
     width: 50vw;
@@ -26,7 +27,7 @@
 
 .button {
     @include shadow;
-    @include border;
+    border: 1px solid black !important;
     background: $purple;
     color: $white;
     border: none;

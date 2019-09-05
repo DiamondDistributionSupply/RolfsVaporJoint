@@ -1,9 +1,27 @@
-import React from "react"
+import React, { Component } from "react"
+import axios from "axios"
 
 import SiteBanner from "../../ReusableComponents/SiteBanner/SiteBanner"
 import "./AdminLogin.scss"
 
-let login = () => {
+class AdminLogin extends Component {
+   constructor() {
+       super()
+
+       this.state = {
+           backgroundImg: { id: 1, img: "" }
+       }
+   }
+
+   async componentDidMount() {
+       let backgroundRes = await axios.get("/api/admin/get/background")
+       console.log(backgroundRes)
+       this.setState({
+           backgroundImg: backgroundRes.data[0]
+       })
+   }
+
+   login = () => {
     try {
         // Grab auth0 stuff from env
         let {
@@ -21,16 +39,23 @@ let login = () => {
     }
 }
 
-function AdminLogin(props) {
+   render() {
+    const backgroundStyle = {
+        backgroundImage: `url(${this.state.backgroundImg.img})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
+    }
+
     return (
-        <div className="admin_login">
+        <div className="admin_login" style={backgroundStyle}>
             <SiteBanner />
-            <div class="login_container">
-                <button class="button" onClick={login}>Login</button>
+            <div className="login_container">
+                <button className="button" onClick={this.login}>Login</button>
             </div>
             <div></div>
         </div>
     )
+   }
 }
 
 export default AdminLogin
