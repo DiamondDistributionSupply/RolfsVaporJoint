@@ -4,6 +4,7 @@
 .admin_edit_home {
     @include flex(column);
     width: 97vw;
+    color: $white;
 }
 
 .edit_home_background_container {
@@ -31,6 +32,7 @@
 
 .edit_description_container {
     @include flex;
+    margin-bottom: 10px;
 }
 
 .edit_description_p {

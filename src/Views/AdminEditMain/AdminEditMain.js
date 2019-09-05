@@ -14,7 +14,7 @@ class AdminEditMain extends Component {
         super()
 
         this.state = {
-            backgroundImg: {},
+            backgroundImg: { id: 1, img: "" },
             imgs: [],
             description: "",
             editingBackground: false,
@@ -135,8 +135,14 @@ class AdminEditMain extends Component {
             marginRight: "10px"
         }
 
+        const backgroundStyle = {
+            backgroundImage: `url(${this.state.backgroundImg.img})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+        }
+
         return (
-            <div className="admin_edit_home">
+            <div className="admin_edit_home" style={backgroundStyle}>
                 <SiteBanner />
                 <AdminNavbar />
                 <div className="edit_home_images_container">
