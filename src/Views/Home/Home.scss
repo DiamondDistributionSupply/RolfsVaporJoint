@@ -22,18 +22,11 @@
         bottom: 100px;
     }
     @media only screen and (min-height: 900px) {
-        bottom: 150px;
-        height: 450px;
-    }
-    @media only screen and (min-height: 1025px) {
         bottom: 210px;
+        height: 450px;
     }
     @media only screen and (min-width: 1000px) {
         width: 60vw;
-    }
-    @media only screen and (min-width: 1850px) {
-        width: 60vw;
-        bottom: 250px;
     }
 }
 
