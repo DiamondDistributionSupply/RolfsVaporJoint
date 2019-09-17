@@ -46,7 +46,6 @@
 }
 
 .locations_list {
-    height: 200px;
     margin-left: -17px;
     margin-right: -115px;
     @media only screen and (min-width: 550px) {
@@ -66,4 +65,20 @@
     height: 130px;
     margin-left: -110px;
     margin-right: -6px;
+}
+
+.locations_list p {
+    line-height: 3vh;
+}
+
+.locations_list_provo {
+    margin-bottom: 20px;
+}
+
+.locations_list_provo :nth-child(1), .locations_list_orem :nth-child(1) {
+    font-weight: bold;
+}
+
+.locations_list_orem {
+    margin-bottom: 10px;
 }
