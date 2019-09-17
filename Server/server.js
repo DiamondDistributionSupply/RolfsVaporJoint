@@ -43,9 +43,11 @@ app.use((req, res, next) => {
 // Admin endpoints
 app.get("/auth/admin/callback", admin.login)
 app.get("/api/admin/admin-data", admin.checkAdminCred)
+app.get("/api/admin/logout", admin.logout)
 app.put("/api/admin/home/img", admin.updateHomeImg)
 app.put("/api/admin/home/background", admin.updateHomeBackgroundImg)
 app.put("/api/admin/about/description", admin.updateAboutDescription)
+
 
 // User endpoints
 app.get("/api/user/home-info", user.getHomeInfo)

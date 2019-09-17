@@ -27,6 +27,10 @@ class AdminHome extends Component {
     }
 
     render() {
+        const {
+            REACT_APP_LOGOUT
+        } = process.env
+
         return (
             <div className="admin_home">
                 <SiteBanner />
@@ -43,6 +47,7 @@ class AdminHome extends Component {
                         <button className="admin_home_btn" onClick={this.workInProgress}>Add a Product</button>
                     </div>
                 </div>
+                <a className="logout" href={`${REACT_APP_LOGOUT}`}>Logout</a>
             </div>
         )
     }

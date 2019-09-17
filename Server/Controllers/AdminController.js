@@ -44,6 +44,16 @@ module.exports = {
             res.sendStatus(500)
         }
     },
+
+    logout: (req, res) => {
+        try {
+            req.session.destroy()
+            res.redirect("/#/admin/login")
+        }
+        catch(err) {
+            console.log(err)
+        }
+    },
     
     checkAdminCred: (req, res) => {
         try {
