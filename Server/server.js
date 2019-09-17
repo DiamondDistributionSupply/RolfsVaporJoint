@@ -19,6 +19,7 @@ const {
 const port = SERVER_PORT || 3005
 
 app.use(express.json())
+app.use(express.static(`${__dirname}/../build`))
 app.use(session({
     secret: SECRET,
     resave: false,
