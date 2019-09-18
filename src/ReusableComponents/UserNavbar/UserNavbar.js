@@ -86,7 +86,7 @@ class UserNavbar extends Component {
                         </div>
                         <div className="locations_list_orem">
                             <p>Orem</p>
-                            <p>016 Industrial Park Rd, Orem, UT 84057</p>
+                            <p>1016 Industrial Park Rd, Orem, UT 84057</p>
                             <button onClick={(e) => this.getDirections(e, "016 Industrial Park Rd, Orem, UT 84057")}>Get Directions</button>
                             <p>Hours</p>
                             <p>Monday - Saturday: 11AM - 9PM</p>

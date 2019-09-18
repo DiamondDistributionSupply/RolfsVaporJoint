@@ -8,7 +8,7 @@ function UserFooter() {
                 <p>Locations:</p>
                 <div>
                     <p>Provo: 895 S University Ave, Provo, UT 84601</p>
-                    <p>Orem: 016 Industrial Park Rd, Orem, UT 84057</p>
+                    <p>Orem: 1016 Industrial Park Rd, Orem, UT 84057</p>
                 </div>
                 <p>Contact Us:</p>
                 <div>
