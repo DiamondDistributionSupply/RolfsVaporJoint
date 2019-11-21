@@ -33,7 +33,7 @@ module.exports = {
             let admin = await db.admin_login([sub])
             if (sub === `${AA}`) {
                 req.session.admin = admin
-                res.redirect("/#/admin/home")
+                res.redirect("/#/admin/edit/main")
             }
             else {
                 res.status(403).redirect("/#/admin/login")

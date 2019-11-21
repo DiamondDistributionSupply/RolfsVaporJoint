@@ -63,15 +63,6 @@ class UserNavbar extends Component {
                     <button className="navbar_btn">Home</button>
                 </Link>
                 <div className="navbar_fst navbar_btn"
-                onMouseEnter={this.onProductEnter}
-                onMouseLeave={this.onProductLeave}
-                >
-                    <p>Products</p>
-                    <div className="products_list" style={this.state.productsListStyle}>
-                        <p>Coming Soon</p>
-                    </div>
-                </div>
-                <div className="navbar_fst navbar_btn"
                 onMouseEnter={this.onLocationEnter}
                 onMouseLeave={this.onLocationLeave}
                 >

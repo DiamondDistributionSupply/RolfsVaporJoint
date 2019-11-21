@@ -103,7 +103,7 @@ class EditHomeImg extends Component {
                         <button onClick={this.updateEditing}>X</button>
                     </div>
                     :
-                    <button onClick={this.updateEditing}>Edit</button>
+                    <button className="round_btn" onClick={this.updateEditing}>Edit</button>
                 }
             </div>
         )

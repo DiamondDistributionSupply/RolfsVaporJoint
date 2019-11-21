@@ -3,7 +3,7 @@
 
 .admin_edit_home {
     @include flex(column);
-    width: 97vw;
+    width: 100vw;
 }
 
 .edit_home_background_container {
@@ -53,4 +53,12 @@
 
 .edit_description_area :nth-child(2) {
     margin-right: 10px;
+}
+
+.white_txt {
+    color: white;
+}
+
+.round_btn {
+    border-radius: $buttonRadius;
 }

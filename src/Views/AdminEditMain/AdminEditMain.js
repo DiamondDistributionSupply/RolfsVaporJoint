@@ -5,7 +5,6 @@ import Dropzone from "react-dropzone"
 
 import EditHomeImg from "../../ReusableComponents/EditHomeImg/EditHomeImg"
 import { getAdminData } from "../../Ducks/reducer"
-import AdminNavbar from "../../ReusableComponents/AdminNavbar/AdminNavbar"
 import SiteBanner from "../../ReusableComponents/SiteBanner/SiteBanner"
 import "./AdminEditMain.scss"
 
@@ -135,12 +134,17 @@ class AdminEditMain extends Component {
             marginRight: "10px"
         }
 
+        let backgroundImg = {
+            backgroundImage: `url(${this.state.backgroundImg.img})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+        }
+
         return (
-            <div className="admin_edit_home">
+            <div className="admin_edit_home" style={backgroundImg}>
                 <SiteBanner />
-                <AdminNavbar />
                 <div className="edit_home_images_container">
-                    <p className="edit_home_p">Home Background</p>
+                    <p className="edit_home_p white_txt">Home Background</p>
                     <div className="edit_home_background_container">
                         <img src={this.state.backgroundImg.img} alt="home_background"/>
                         {
@@ -153,24 +157,24 @@ class AdminEditMain extends Component {
                                     multiple={false}
                                     maxSize={8000000}
                                 >
-                                    <p>Drag images or click to upload</p>
+                                    <p className="white_txt">Drag images or click to upload</p>
                                 </Dropzone>
-                                <button className=""
+                                <button
                                 name="editingBackground"
                                 onClick={this.updateEditing}>X</button>
                             </div>
                             :
-                            <button className=""
+                            <button className="round_btn"
                             name="editingBackground"
-                            onClick={this.updateEditing}>edit</button>
+                            onClick={this.updateEditing}>Edit</button>
                         }
                     </div>
                     <div className="edit_home_carousel_container">
-                        <p className="edit_home_p">Carousel Images</p>
+                        <p className="edit_home_p white_txt">Carousel Images</p>
                         {imgs}
                     </div>
                     <div className="edit_description_container">
-                        <p className="edit_description_p">Description:</p>
+                        <p className="edit_description_p white_txt">Description:</p>
                         {
                             this.state.editingDescription
                             ?
@@ -188,8 +192,9 @@ class AdminEditMain extends Component {
                             </div>
                             :
                             <div className="edit_description">
-                                <p>{this.state.description}</p>
-                                <button name="editingDescription"
+                                <p className="white_txt">{this.state.description}</p>
+                                <button className="round_btn" 
+                                name="editingDescription"
                                 onClick={this.updateEditing}>Edit</button>
                             </div>
                         }
