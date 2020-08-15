@@ -29,6 +29,19 @@
     margin-bottom: 10px;
 }
 
+.edit_home_carousel_container {
+    margin-bottom: 10px;
+}
+
+.edit_about_img_container {
+    @include flex(row, space-around, center);
+    margin-bottom: 10px;
+    img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
 .edit_description_container {
     @include flex;
 }

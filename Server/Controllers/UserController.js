@@ -19,9 +19,10 @@ module.exports = {
             const db = req.app.get("db")
 
             let background = await db.get_home_bg_img()
+            let aboutImg = await db.get_about_img()
             let description = await db.get_about_description()
 
-            res.status(200).send([background, description])
+            res.status(200).send([background, aboutImg, description])
         }
         catch(err) {
             console.log(err)

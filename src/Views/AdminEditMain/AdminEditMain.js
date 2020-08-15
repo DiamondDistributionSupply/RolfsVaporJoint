@@ -15,8 +15,10 @@ class AdminEditMain extends Component {
         this.state = {
             backgroundImg: {},
             imgs: [],
+            aboutImg: {},
             description: "",
             editingBackground: false,
+            editingAboutImg: false,
             editingDescription: false
         }
     }
@@ -37,13 +39,15 @@ class AdminEditMain extends Component {
 
         try {
             let infoRes = await axios.get("/api/user/home-info")
-            let descriptionRes = await axios.get("/api/user/about-info")
+            let aboutRes = await axios.get("/api/user/about-info")
             this.setState({
                 backgroundImg: infoRes.data[0][0],
                 imgs: infoRes.data[1],
-                description: descriptionRes.data[1][0].description
+                aboutImg: aboutRes.data[1][0],
+                description: aboutRes.data[2][0].description
             })
             console.log(infoRes)
+            console.log(aboutRes)
         }
         catch(err) {
             console.log(err)
@@ -95,7 +99,7 @@ class AdminEditMain extends Component {
                 axios.put("/api/admin/home/background", { img: this.state.backgroundImg.img})
             })
             .then(() => {
-                this.updateEditing({target: {name: "editingBackground"}})
+                this.updateEditing({target: {name: "editingBackroung"}})
                 alert("Image updated")
             })
         }
@@ -109,6 +113,55 @@ class AdminEditMain extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+
+    handleAboutDrop = (files, rejectedFiles) => {
+        try {
+        const {
+            REACT_APP_CL_UPLOAD_PRESET,
+            REACT_APP_CL_API_KEY,
+            REACT_APP_CL_URL
+        } = process.env
+
+        if (rejectedFiles.length >= 1) {
+            // Let them know why files were rejected
+            let message = ""
+            if (rejectedFiles[0].size > 8000000) {
+                message = "Image is too big"
+            }
+            else {
+                message = "Wrong file type only images are accepted"
+            }
+            alert(message)
+            return
+        }
+        else {
+            const formData = new FormData()
+            formData.append("file", files[0])
+            formData.append("tags", "cloudinaryExample, medium, gist")
+            formData.append("upload_preset", `${REACT_APP_CL_UPLOAD_PRESET}`)
+            formData.append("api_key", `${REACT_APP_CL_API_KEY}`)
+            formData.append("timestamp", (Date.now() / 1000 | 0))
+
+            axios.post(`${REACT_APP_CL_URL}`, formData)
+            .then(res => {
+                console.log(res.data)
+                 this.setState({
+                    aboutImg: {id: 1, img: res.data.secure_url}
+                })
+            })
+            .then(() => {
+                axios.put("/api/admin/about/img", { img: this.state.aboutImg.img})
+            })
+            .then(() => {
+                this.updateEditing({target: {name: "editingAboutImg"}})
+                alert("Image updated")
+            })
+        }
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     updateDescription = async () => {
@@ -172,6 +225,31 @@ class AdminEditMain extends Component {
                     <div className="edit_home_carousel_container">
                         <p className="edit_home_p white_txt">Carousel Images</p>
                         {imgs}
+                    </div>
+                    <p className="about_img_p white_txt">About Image</p>
+                    <div className="edit_about_img_container">
+                        <img src={this.state.aboutImg.img} alt="about_img"/>
+                        {
+                            this.state.editingAboutImg ?
+                            <div className="dropzone_container">
+                            <Dropzone
+                                style={dropzoneStyle}
+                                onDrop={this.handleAboutDrop}
+                                accept="image/*"
+                                multiple={false}
+                                maxSize={8000000}
+                            >
+                                <p className="white_txt">Drag image or click to upload</p>
+                            </Dropzone>
+                            <button
+                            name="editingAboutImg"
+                            onClick={this.updateEditing}>X</button>
+                        </div>
+                            :
+                            <button className="round_btn"
+                            name="editingAboutImg"
+                            onClick={this.updateEditing}>Edit</button>
+                        }
                     </div>
                     <div className="edit_description_container">
                         <p className="edit_description_p white_txt">Description:</p>

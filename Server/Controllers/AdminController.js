@@ -100,6 +100,21 @@ module.exports = {
         }
     },
 
+    updateAboutImg: async (req, res) => {
+        try {
+            const db = req.app.get("db")
+            const { img } = req.body
+
+            await db.update_about_img([img])
+
+            res.sendStatus(200)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
+
     updateAboutDescription: async (req, res) => {
         try {
             const db = req.app.get("db")

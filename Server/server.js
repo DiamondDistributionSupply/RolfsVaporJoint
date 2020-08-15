@@ -47,6 +47,7 @@ app.get("/api/admin/admin-data", admin.checkAdminCred)
 app.get("/api/admin/logout", admin.logout)
 app.put("/api/admin/home/img", admin.updateHomeImg)
 app.put("/api/admin/home/background", admin.updateHomeBackgroundImg)
+app.put("/api/admin/about/img", admin.updateAboutImg)
 app.put("/api/admin/about/description", admin.updateAboutDescription)
 
 
