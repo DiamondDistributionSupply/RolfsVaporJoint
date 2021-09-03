@@ -73,14 +73,15 @@ class UserNavbar extends Component {
                             <p>895 S University Ave, Provo, UT 84601</p>
                             <button onClick={ (e) => this.getDirections(e, "895 S University Ave, Provo, UT 84601")}>Get Directions</button>
                             <p>Hours</p>
-                            <p>Monday - Sunday: 11AM - 9PM </p>
+                            <p>Monday - Saturday: 11AM - 8PM </p>
+                            <p>Sunday: 12PM - 7PM</p>
                         </div>
                         <div className="locations_list_orem">
                             <p>Orem</p>
                             <p>1016 Industrial Park Rd, Orem, UT 84057</p>
                             <button onClick={(e) => this.getDirections(e, "016 Industrial Park Rd, Orem, UT 84057")}>Get Directions</button>
                             <p>Hours</p>
-                            <p>Monday - Saturday: 11AM - 9PM</p>
+                            <p>Monday - Saturday: 11AM - 8PM</p>
                             <p>Sunday: Closed</p>
                         </div>
                     </div>
