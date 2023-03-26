@@ -1,77 +1,77 @@
-@import "../../Styles/mixins.scss";
-@import "../../Styles/variables.scss";
+// @import "../../Styles/mixins.scss";
+// @import "../../Styles/variables.scss";
 
-.admin_edit_home {
-    @include flex(column);
-    width: 100vw;
-}
+// .admin_edit_home {
+//     @include flex(column);
+//     width: 100vw;
+// }
 
-.edit_home_background_container {
-    @include flex(row, space-around, center);
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    img {
-        width: 200px;
-        height: 200px;
-    }
-    button {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-}
+// .edit_home_background_container {
+//     @include flex(row, space-around, center);
+//     margin-bottom: 10px;
+//     flex-wrap: wrap;
+//     img {
+//         width: 200px;
+//         height: 200px;
+//     }
+//     button {
+//         margin-left: 10px;
+//         margin-right: 10px;
+//     }
+// }
 
-.dropzone_container {
-    @include flex;
-    flex-wrap: wrap;
-}
+// .dropzone_container {
+//     @include flex;
+//     flex-wrap: wrap;
+// }
 
-.edit_home_p {
-    margin-bottom: 10px;
-}
+// .edit_home_p {
+//     margin-bottom: 10px;
+// }
 
-.edit_home_carousel_container {
-    margin-bottom: 10px;
-}
+// .edit_home_carousel_container {
+//     margin-bottom: 10px;
+// }
 
-.edit_about_img_container {
-    @include flex(row, space-around, center);
-    margin-bottom: 10px;
-    img {
-        width: 200px;
-        height: 200px;
-    }
-}
+// .edit_about_img_container {
+//     @include flex(row, space-around, center);
+//     margin-bottom: 10px;
+//     img {
+//         width: 200px;
+//         height: 200px;
+//     }
+// }
 
-.edit_description_container {
-    @include flex;
-}
+// .edit_description_container {
+//     @include flex;
+// }
 
-.edit_description_p {
-    margin-right: 10px;
-}
+// .edit_description_p {
+//     margin-right: 10px;
+// }
 
-.edit_description {
-    @include flex;
-    p {
-        margin-right: 10px;
-    }
-}
+// .edit_description {
+//     @include flex;
+//     p {
+//         margin-right: 10px;
+//     }
+// }
 
-.edit_description_area {
-    @include flex;
-    textarea {
-        margin-right: 10px;
-    }
-}
+// .edit_description_area {
+//     @include flex;
+//     textarea {
+//         margin-right: 10px;
+//     }
+// }
 
-.edit_description_area :nth-child(2) {
-    margin-right: 10px;
-}
+// .edit_description_area :nth-child(2) {
+//     margin-right: 10px;
+// }
 
-.white_txt {
-    color: white;
-}
+// .white_txt {
+//     color: white;
+// }
 
-.round_btn {
-    border-radius: $buttonRadius;
-}
+// .round_btn {
+//     border-radius: $buttonRadius;
+// }
